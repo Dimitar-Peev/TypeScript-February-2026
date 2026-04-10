@@ -1,4 +1,4 @@
-function dayOfTheWeek(day: number): void {
+function getDayOfTheWeek(day: number): void {
     enum Days {
         Monday = 1,
         Tuesday,
@@ -11,6 +11,6 @@ function dayOfTheWeek(day: number): void {
     console.log(Days[day] || 'error');
 }
 
-dayOfTheWeek(1);   // 'Monday'
-dayOfTheWeek(5);   // 'Friday'
-dayOfTheWeek(-1);  // 'error'
+getDayOfTheWeek(1);   // 'Monday'
+getDayOfTheWeek(5);   // 'Friday'
+getDayOfTheWeek(-1);  // 'error'
