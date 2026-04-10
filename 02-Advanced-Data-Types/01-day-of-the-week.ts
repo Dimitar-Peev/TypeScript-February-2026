@@ -1,16 +1,17 @@
-function getDayOfTheWeek(day: number): void {
-    enum Days {
-        Monday = 1,
-        Tuesday,
-        Wednesday,
-        Thursday,
-        Friday,
-        Saturday,
-        Sunday
-    }
-    console.log(Days[day] || 'error');
+enum Days {
+    Monday = 1,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday,
+    Sunday
 }
 
-getDayOfTheWeek(1);   // 'Monday'
-getDayOfTheWeek(5);   // 'Friday'
-getDayOfTheWeek(-1);  // 'error'
+function getDayOfTheWeek(day: number): string  {
+    return Days[day] || 'error';
+}
+
+console.log(getDayOfTheWeek(1));   // 'Monday'
+console.log(getDayOfTheWeek(5));   // 'Friday'
+console.log(getDayOfTheWeek(-1));  // 'error'
