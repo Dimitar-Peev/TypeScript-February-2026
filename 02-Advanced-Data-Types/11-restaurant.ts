@@ -93,9 +93,9 @@ let order: FullOrder = {
     }
 }
 
-console.log(order.getDishInfo());
-console.log(order.getOrderSummary());
-console.log(order.getFinalPrice());
-console.log(order.getOrderStatus());
+console.log(order.getDishInfo());      // Cheese Burger - Price: $12, Vegan: No
+console.log(order.getOrderSummary());  // Order ID: 101 - Dish: Cheese Burger, Quantity: 2, Total Price: $24
+console.log(order.getFinalPrice());    // Final Price after 10% discount: $21.6
+console.log(order.getOrderStatus());   // Order Status: Pending
 order.updateOrderStatus();
-console.log(order.getOrderStatus());
+console.log(order.getOrderStatus());   // Order Status: Shipped
