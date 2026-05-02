@@ -27,3 +27,5 @@ export interface User {
     website: string;
     company: Company;
 }
+
+export type CreateUser = Omit<User, 'id'>;
