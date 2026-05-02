@@ -1,6 +1,6 @@
 import {Log} from "../decorators/log.ts";
 
-export class APIService<T> {
+export class APIService<T, CreateItemT> {
     private serviceUrl: string;
 
     constructor(serviceUrl: string) {
@@ -21,7 +21,7 @@ export class APIService<T> {
     }
 
     @Log
-    public async create(itemData: T): Promise<T> {
+    public async create(itemData: CreateItemT): Promise<T> {
         const response = await fetch(this.serviceUrl, {
             method: 'POST',
             headers: {
