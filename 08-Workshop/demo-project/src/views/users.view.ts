@@ -1,20 +1,22 @@
 import type {User} from "../interfaces/user.interface.ts";
 import {renderHtml} from "../utils/html.ts";
-import {UsersService} from "../services/users.service.ts";
-
-const usersService = new UsersService();
+import {usersService} from "../services/services.ts";
 
 export async function renderUsersView(): Promise<void> {
 
-    const users = await usersService.getAll();
+    try {
+        const users = await usersService.getAll();
 
-    const template = `
-        <ul>
-            ${users.map(post => generateSingleUserHtml(post)).join('')}
-        </ul>
-    `;
+        const template = `
+            <ul>
+                ${users.map(post => generateSingleUserHtml(post)).join('')}
+            </ul>
+        `;
 
-    renderHtml(template);
+        renderHtml(template);
+    } catch (error) {
+        renderHtml(`<p>${error}</p>`);
+    }
 }
 
 function generateSingleUserHtml(user: User): string {
