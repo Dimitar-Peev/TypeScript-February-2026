@@ -1,20 +1,22 @@
 import type {Post} from "../interfaces/post.interface.ts";
 import {renderHtml} from "../utils/html.ts";
-import {PostsService} from "../services/posts.service.ts";
-
-const postsService = new PostsService();
+import {postsService} from "../services/services.ts";
 
 export async function renderPostsView(): Promise<void> {
 
-    const posts = await postsService.getAll();
+    try {
+        const posts = await postsService.getAll();
 
-    const template = `
-        <ul>
-            ${posts.map(post => generateSinglePostHtml(post)).join('')}
-        </ul>
-    `;
+        const template = `
+            <ul>
+                ${posts.map(post => generateSinglePostHtml(post)).join('')}
+            </ul>
+        `;
 
-    renderHtml(template);
+        renderHtml(template);
+    } catch (error) {
+        renderHtml(`<p>${error}</p>`);
+    }
 }
 
 function generateSinglePostHtml(post: Post): string {
