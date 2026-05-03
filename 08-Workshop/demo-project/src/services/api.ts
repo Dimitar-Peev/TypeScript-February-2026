@@ -10,6 +10,11 @@ export class APIService<T, CreateItemT> {
     @Log
     public async getAll(): Promise<T[]> {
         const response = await fetch(`${this.serviceUrl}`);
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch data');
+        }
+        
         const data = await response.json();
         return data as T[];
     }
